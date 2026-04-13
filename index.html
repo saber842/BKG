@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balya Vardhan Gurukul — Play · Learn · Grow</title>
+  <meta name="description" content="Balya Vardhan Gurukul — A nurturing school for LKG to Class 8, blending traditional values with modern education. Located in Ghaziabad, UP." />
+  <link rel="icon" href="public/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Nunito:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #2d7a3a;
+      --green-light: #4caf65;
+      --green-pale: #e8f5eb;
+      --orange: #e07b2a;
+      --orange-light: #f5a44a;
+      --orange-pale: #fff3e8;
+      --navy: #1a2d5a;
+      --navy-light: #2a4080;
+      --gold: #c8952a;
+      --cream: #fdf9f4;
+      --white: #ffffff;
+      --text: #2c2c2c;
+      --text-muted: #6b7280;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--green-pale);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-brand img { height: 48px; width: 48px; object-fit: contain; }
+    .nav-brand-text { line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--navy);
+      display: block;
+    }
+    .nav-brand-tag {
+      font-size: 0.7rem; color: var(--orange);
+      letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--navy);
+      font-size: 0.88rem; font-weight: 600;
+      padding: 0.5rem 0.9rem; border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { background: var(--green-pale); color: var(--green); }
+
+    .nav-cta {
+      background: var(--orange) !important; color: white !important;
+      border-radius: 24px !important; padding: 0.5rem 1.2rem !important;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--navy); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0faf2 0%, #fff8f0 50%, #f0f4ff 100%);
+      display: flex; align-items: center;
+      padding: 100px 2rem 60px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg-shapes {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-bg-shapes span {
+      position: absolute; border-radius: 50%;
+      opacity: 0.08;
+    }
+    .hero-bg-shapes span:nth-child(1) {
+      width: 500px; height: 500px; background: var(--green);
+      top: -150px; right: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-bg-shapes span:nth-child(2) {
+      width: 300px; height: 300px; background: var(--orange);
+      bottom: -50px; left: -80px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    .hero-bg-shapes span:nth-child(3) {
+      width: 200px; height: 200px; background: var(--navy);
+      top: 40%; left: 30%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+      width: 100%;
+    }
+
+    .hero-text { animation: slideUp 0.8s ease both; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-pale); color: var(--orange);
+      border: 1.5px solid var(--orange-light);
+      padding: 0.4rem 1rem; border-radius: 24px;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '🌱'; font-size: 1rem; }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .hero-title .accent { color: var(--green); }
+    .hero-title .accent2 { color: var(--orange); }
+
+    .hero-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem; color: var(--orange);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 2.5rem; max-width: 480px;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: white;
+      padding: 0.85rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 4px 20px rgba(45,122,58,0.35);
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,122,58,0.4); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; color: var(--navy);
+      padding: 0.85rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      border: 2px solid var(--navy);
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { background: var(--navy); color: white; transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900; color: var(--green);
+      display: block;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    .hero-visual {
+      animation: slideUp 0.8s 0.2s ease both;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+
+    .hero-logo-frame {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      border: 3px solid var(--green-pale);
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-logo-frame img { width: 280px; height: 280px; object-fit: contain; }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+    }
+    .pill {
+      background: white; border-radius: 20px; padding: 0.4rem 1rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--navy);
+      border: 1.5px solid #e5eaff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 80px 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--orange); font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; display: block; width: 28px; height: 2px; background: var(--orange);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-title .accent { color: var(--green); }
+
+    .section-desc {
+      font-size: 1.05rem; color: var(--text-muted);
+      line-height: 1.8; max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: white; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-text {}
+    .about-features { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .about-feature {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.25rem; border-radius: 16px;
+      background: var(--cream); border-left: 4px solid var(--green);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .about-feature:hover { transform: translateX(6px); box-shadow: var(--shadow); }
+    .about-feat-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--green-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .about-feat-title { font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .about-feat-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    .about-visual {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .about-card-big {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 24px; padding: 2.5rem;
+      color: white; position: relative; overflow: hidden;
+    }
+    .about-card-big::after {
+      content: '📚'; font-size: 80px; position: absolute;
+      right: -10px; bottom: -10px; opacity: 0.15;
+    }
+    .about-card-big h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; margin-bottom: 0.75rem;
+    }
+    .about-card-big p { font-size: 0.92rem; opacity: 0.85; line-height: 1.7; }
+
+    .about-cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .about-mini-card {
+      background: var(--cream); border-radius: 16px; padding: 1.5rem;
+      text-align: center; border: 1.5px solid var(--green-pale);
+    }
+    .about-mini-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .about-mini-card strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--green); display: block;
+    }
+    .about-mini-card span { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+
+    /* ─── ACADEMICS ─── */
+    #academics { background: var(--cream); }
+    .classes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+    .class-card {
+      background: white; border-radius: 20px; padding: 1.75rem 1.5rem;
+      text-align: center; border: 2px solid transparent;
+      box-shadow: var(--shadow);
+      transition: all 0.3s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .class-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--green-pale), white);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .class-card:hover { border-color: var(--green); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .class-card:hover::before { opacity: 1; }
+    .class-card * { position: relative; z-index: 1; }
+    .class-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .class-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .class-sub { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .class-tag {
+      display: inline-block; margin-top: 0.75rem;
+      background: var(--green-pale); color: var(--green);
+      font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.7rem;
+      border-radius: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    .subjects-section { margin-top: 4rem; }
+    .subjects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .subject-pill {
+      background: white; border-radius: 14px; padding: 1.1rem 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      border: 1.5px solid #e8eaf0; font-weight: 600; font-size: 0.88rem;
+      color: var(--navy); transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .subject-pill:hover { border-color: var(--orange); background: var(--orange-pale); transform: translateY(-2px); }
+    .subject-pill .icon { font-size: 1.4rem; }
+
+    /* ─── TEACHERS ─── */
+    #teachers { background: white; }
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.75rem;
+    }
+    .teacher-card {
+      background: var(--cream); border-radius: 24px; overflow: hidden;
+      border: 1.5px solid #eef0f5;
+      transition: all 0.3s; box-shadow: var(--shadow);
+    }
+    .teacher-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .teacher-avatar {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      position: relative; overflow: hidden;
+    }
+    .teacher-body { padding: 1.5rem; }
+    .teacher-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+    .teacher-role {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .teacher-qual {
+      font-size: 0.82rem; color: var(--text-muted);
+      margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;
+    }
+    .teacher-qual::before { content: '🎓'; font-size: 0.9rem; }
+    .teacher-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .teacher-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .teacher-tag {
+      background: var(--green-pale); color: var(--green);
+      font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.65rem;
+      border-radius: 10px;
+    }
+
+    /* ─── FACILITIES ─── */
+    #facilities { background: var(--cream); }
+    .facilities-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .facility-card {
+      background: white; border-radius: 20px; padding: 2rem;
+      border: 1.5px solid #eef0f5; box-shadow: var(--shadow);
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .facility-card::after {
+      content: attr(data-emoji);
+      position: absolute; right: -5px; bottom: -5px;
+      font-size: 60px; opacity: 0.07;
+    }
+    .facility-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--green); }
+    .facility-icon {
+      width: 56px; height: 56px; background: var(--green-pale);
+      border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem; margin-bottom: 1.25rem;
+    }
+    .facility-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;
+    }
+    .facility-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─── ACTIVITIES ─── */
+    #activities { background: var(--navy); color: white; }
+    #activities .section-title { color: white; }
+    #activities .section-title .accent { color: var(--orange-light); }
+    #activities .section-desc { color: rgba(255,255,255,0.65); }
+    #activities .section-label { color: var(--orange-light); }
+    #activities .section-label::before,
+    #activities .section-label::after { background: var(--orange-light); }
+
+    .activities-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .activity-card {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 1.75rem;
+      transition: all 0.3s; text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    .activity-card:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--orange-light);
+      transform: translateY(-4px);
+    }
+    .activity-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .activity-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 0.4rem;
+    }
+    .activity-desc { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* ─── ADMISSIONS ─── */
+    #admissions { background: white; }
+    .admissions-layout {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;
+    }
+    .admission-steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 1.25rem; position: relative;
+      padding-bottom: 2.5rem;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step::before {
+      content: ''; position: absolute;
+      left: 24px; top: 48px; bottom: 0;
+      width: 2px; background: var(--green-pale);
+    }
+    .step:last-child::before { display: none; }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--green); color: white;
+      font-weight: 800; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; z-index: 1; box-shadow: 0 4px 16px rgba(45,122,58,0.3);
+    }
+    .step-content { padding-top: 0.6rem; }
+    .step-title { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    .admission-form-card {
+      background: var(--cream); border-radius: 24px; padding: 2.5rem;
+      border: 1.5px solid var(--green-pale); box-shadow: var(--shadow);
+    }
+    .admission-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--navy); margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block; font-size: 0.85rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      background: white; border: 1.5px solid #dde2ec;
+      border-radius: 12px; font-family: 'Nunito', sans-serif;
+      font-size: 0.92rem; color: var(--text); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(45,122,58,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%; padding: 1rem;
+      background: var(--green); color: white;
+      border: none; border-radius: 14px; cursor: pointer;
+      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(45,122,58,0.3);
+    }
+    .btn-submit:hover {
+      background: var(--green-light); transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(45,122,58,0.4);
+    }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; }
+
+    /* ─── GALLERY ─── */
+    #gallery { background: var(--cream); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+    .gallery-item {
+      border-radius: 16px; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-pale), white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; aspect-ratio: 1;
+      transition: transform 0.3s; cursor: pointer;
+      position: relative; border: 2px solid white;
+      box-shadow: var(--shadow);
+    }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 2; font-size: 6rem; }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item .caption {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,45,90,0.8), transparent);
+      color: white; font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700;
+      display: flex; align-items: flex-end; padding: 1rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .caption { opacity: 1; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: white; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--cream); border-radius: 20px; padding: 2rem;
+      border: 1.5px solid #eef0f5; box-shadow: var(--shadow);
+      transition: all 0.3s; position: relative;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; color: var(--green-pale);
+      line-height: 0.5; margin-bottom: 1rem; display: block;
+    }
+    .testimonial-text {
+      font-size: 0.92rem; color: var(--text-muted); line-height: 1.8;
+      font-style: italic; margin-bottom: 1.5rem;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; background: var(--green-pale);
+    }
+    .author-name { font-weight: 700; color: var(--navy); font-size: 0.92rem; }
+    .author-role { font-size: 0.78rem; color: var(--text-muted); }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+    /* ─── NOTICE BOARD ─── */
+    #notices { background: var(--cream); }
+    .notices-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; }
+    .notice-list { display: flex; flex-direction: column; gap: 1rem; }
+    .notice-item {
+      background: white; border-radius: 16px; padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      border-left: 4px solid var(--green); box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .notice-item:hover { transform: translateX(4px); }
+    .notice-date {
+      background: var(--green-pale); color: var(--green);
+      border-radius: 12px; padding: 0.4rem 0.7rem;
+      font-size: 0.72rem; font-weight: 800; text-align: center;
+      min-width: 55px; line-height: 1.3; flex-shrink: 0;
+    }
+    .notice-title { font-weight: 700; color: var(--navy); font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .notice-desc { font-size: 0.82rem; color: var(--text-muted); }
+    .notice-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 800;
+      padding: 0.15rem 0.5rem; border-radius: 8px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-top: 0.4rem;
+    }
+    .badge-new { background: #fff0e8; color: var(--orange); }
+    .badge-exam { background: #ffe8e8; color: #c0392b; }
+    .badge-event { background: var(--green-pale); color: var(--green); }
+    .badge-holiday { background: #f0e8ff; color: #7c3aed; }
+
+    .calendar-card {
+      background: white; border-radius: 20px; padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+    .calendar-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .event-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .event-item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.75rem; border-radius: 12px; background: var(--cream);
+    }
+    .event-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      margin-top: 4px; flex-shrink: 0;
+    }
+    .event-title { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .event-date { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ─── CONTACT ─── */
+    #contact { background: white; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-block {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .contact-icon {
+      width: 52px; height: 52px; border-radius: 16px;
+      background: var(--green-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.78rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .contact-value { font-weight: 700; color: var(--navy); margin-bottom: 0.1rem; }
+    .contact-value a { color: var(--navy); text-decoration: none; }
+    .contact-value a:hover { color: var(--green); }
+    .contact-sub { font-size: 0.83rem; color: var(--text-muted); }
+
+    .map-placeholder {
+      background: var(--green-pale);
+      border-radius: 20px; height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      border: 2px dashed var(--green); margin-top: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--green); font-size: 1rem; font-weight: 600;
+      text-align: center; padding: 1.5rem;
+    }
+    .map-placeholder .map-icon { font-size: 3rem; }
+
+    .contact-form-card {
+      background: var(--cream); border-radius: 24px; padding: 2.5rem;
+      border: 1.5px solid var(--green-pale); box-shadow: var(--shadow);
+    }
+    .contact-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--navy); margin-bottom: 1.5rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); color: white; padding: 4rem 2rem 0;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand img { height: 60px; margin-bottom: 1rem; filter: brightness(1.1); }
+    .footer-brand p {
+      font-size: 0.88rem; opacity: 0.7; line-height: 1.7; max-width: 280px;
+      margin-bottom: 1.5rem;
+    }
+    .social-links { display: flex; gap: 0.75rem; }
+    .social-link {
+      width: 38px; height: 38px; background: rgba(255,255,255,0.1);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; text-decoration: none;
+      transition: background 0.2s; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .social-link:hover { background: var(--green); }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; margin-bottom: 1.25rem; color: white;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(255,255,255,0.65); font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--orange-light); }
+
+    .footer-bottom {
+      padding: 1.5rem 0; display: flex;
+      align-items: center; justify-content: space-between;
+      font-size: 0.82rem; opacity: 0.6; flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    /* ─── TOAST ─── */
+    #toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+      background: var(--green); color: white;
+      padding: 1rem 1.5rem; border-radius: 14px;
+      font-weight: 700; box-shadow: var(--shadow-lg);
+      transform: translateY(100px); opacity: 0;
+      transition: all 0.3s; display: flex; align-items: center; gap: 10px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ─── SCROLL TOP ─── */
+    #scrollTop {
+      position: fixed; bottom: 2rem; left: 2rem; z-index: 999;
+      width: 44px; height: 44px; background: var(--orange);
+      border-radius: 50%; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: white; box-shadow: 0 4px 16px rgba(224,123,42,0.4);
+      opacity: 0; transform: translateY(20px); transition: all 0.3s;
+    }
+    #scrollTop.visible { opacity: 1; transform: translateY(0); }
+    #scrollTop:hover { background: var(--orange-light); transform: translateY(-3px) !important; }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: white; z-index: 999;
+      padding: 1rem; border-bottom: 2px solid var(--green-pale);
+      flex-direction: column; gap: 0.25rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--navy);
+      font-weight: 600; padding: 0.75rem 1rem;
+      border-radius: 10px; transition: background 0.2s;
+    }
+    .mobile-menu a:hover { background: var(--green-pale); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+      .hero-visual { order: -1; }
+      .hero-logo-frame img { width: 200px; height: 200px; }
+      .hero-desc { margin: 0 auto 2.5rem; }
+      .hero-btns { justify-content: center; }
+      .hero-stats { justify-content: center; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .admissions-layout { grid-template-columns: 1fr; }
+      .notices-layout { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item:first-child { grid-column: span 2; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 60px 1.25rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-brand" href="#hero">
+    <img src="public/logo.png" alt="Balya Vardhan Gurukul Logo" />
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Balya Vardhan Gurukul</span>
+      <span class="nav-brand-tag">Play · Learn · Grow</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#teachers">Faculty</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#notices">Notices</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#admissions" class="nav-cta">Admissions</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#academics" onclick="closeMenu()">Academics</a>
+  <a href="#teachers" onclick="closeMenu()">Faculty</a>
+  <a href="#facilities" onclick="closeMenu()">Facilities</a>
+  <a href="#activities" onclick="closeMenu()">Activities</a>
+  <a href="#notices" onclick="closeMenu()">Notices</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#admissions" onclick="closeMenu()" style="color:var(--orange);font-weight:800;">Admissions Open →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shapes"><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Admissions Open 2025–26</div>
+      <h1 class="hero-title">
+        Nurturing <span class="accent">Young Minds</span>,<br/>
+        Shaping <span class="accent2">Bright Futures</span>
+      </h1>
+      <p class="hero-subtitle">✦ Play · Learn · Grow ✦</p>
+      <p class="hero-desc">
+        Balya Vardhan Gurukul is a premier institution blending Gurukul tradition with modern pedagogy. 
+        We nurture every child from LKG through Class 8 with holistic, value-based education in a joyful learning environment.
+      </p>
+      <div class="hero-btns">
+        <a href="#admissions" class="btn-primary">Apply for Admission →</a>
+        <a href="#about" class="btn-secondary">Explore School</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-number">500+</span><span class="stat-label">Students</span></div>
+        <div class="stat"><span class="stat-number">30+</span><span class="stat-label">Expert Teachers</span></div>
+        <div class="stat"><span class="stat-number">10+</span><span class="stat-label">Years Legacy</span></div>
+        <div class="stat"><span class="stat-number">LKG–8</span><span class="stat-label">Classes</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-frame">
+        <img src="public/logo.png" alt="Balya Vardhan Gurukul" />
+      </div>
+      <div class="hero-pills">
+        <span class="pill">🌱 Gurukul Values</span>
+        <span class="pill">📐 Modern Curriculum</span>
+        <span class="pill">🎵 Arts & Music</span>
+        <span class="pill">🏃 Sports</span>
+        <span class="pill">🧪 Science Labs</span>
+        <span class="pill">🕌 Hindi Medium</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title">A School Rooted in <span class="accent">Tradition</span>, Ready for Tomorrow</h2>
+        <p class="section-desc">
+          Founded on the timeless principles of the Gurukul system, Balya Vardhan Gurukul fosters curiosity, 
+          character, and creativity. Our school empowers children to excel academically while growing into 
+          compassionate, responsible citizens.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feat-icon">🌿</div>
+            <div>
+              <div class="about-feat-title">Holistic Development</div>
+              <div class="about-feat-desc">Beyond textbooks — we develop intellect, emotion, physical fitness, and spiritual grounding.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feat-icon">👨‍👩‍👧</div>
+            <div>
+              <div class="about-feat-title">Parent–School Partnership</div>
+              <div class="about-feat-desc">Regular PTMs, open communication, and digital progress reports keep families involved.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feat-icon">📜</div>
+            <div>
+              <div class="about-feat-title">CBSE Affiliated Curriculum</div>
+              <div class="about-feat-desc">Structured learning aligned with CBSE guidelines, taught in a nurturing bilingual environment.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feat-icon">🏆</div>
+            <div>
+              <div class="about-feat-title">Award-Winning Institution</div>
+              <div class="about-feat-desc">Recognised by the Ghaziabad Education Board for excellence in primary education (2023).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-in">
+        <div class="about-card-big">
+          <h3>Our Vision</h3>
+          <p>To be the most trusted educational institution in Ghaziabad — where every child's potential is discovered, nurtured, and celebrated. We believe learning happens best in an environment filled with love, respect, and curiosity.</p>
+        </div>
+        <div class="about-cards-row">
+          <div class="about-mini-card">
+            <div class="icon">🎯</div>
+            <strong>98%</strong>
+            <span>Pass Rate</span>
+          </div>
+          <div class="about-mini-card">
+            <div class="icon">🌟</div>
+            <strong>15:1</strong>
+            <span>Student–Teacher Ratio</span>
+          </div>
+          <div class="about-mini-card">
+            <div class="icon">📅</div>
+            <strong>2013</strong>
+            <span>Year Founded</span>
+          </div>
+          <div class="about-mini-card">
+            <div class="icon">🏫</div>
+            <strong>Estd.</strong>
+            <span>Ghaziabad, UP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMICS -->
+<section id="academics">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label">Academics</span>
+      <h2 class="section-title">Classes <span class="accent">LKG to 8th</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Our structured academic programme builds a strong foundation year by year, 
+        blending conceptual understanding with practical application.
+      </p>
+    </div>
+    <div class="classes-grid fade-in">
+      <div class="class-card">
+        <span class="class-icon">🌸</span>
+        <div class="class-name">LKG</div>
+        <div class="class-sub">Play-based learning, phonics, colours, numbers & social skills</div>
+        <span class="class-tag">Age 3–4</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">🌼</span>
+        <div class="class-name">UKG</div>
+        <div class="class-sub">Pre-reading, pre-writing, basic maths & activity-led learning</div>
+        <span class="class-tag">Age 4–5</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">📗</span>
+        <div class="class-name">Class 1</div>
+        <div class="class-sub">Hindi, English, Mathematics, EVS & Drawing</div>
+        <span class="class-tag">Age 5–6</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">📘</span>
+        <div class="class-name">Class 2</div>
+        <div class="class-sub">Reading fluency, basic arithmetic & environmental science</div>
+        <span class="class-tag">Age 6–7</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">📙</span>
+        <div class="class-name">Class 3</div>
+        <div class="class-sub">Grammar, multiplication, maps & social studies basics</div>
+        <span class="class-tag">Age 7–8</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">📓</span>
+        <div class="class-name">Class 4 & 5</div>
+        <div class="class-sub">Science, fractions, history, geography & creative writing</div>
+        <span class="class-tag">Age 9–11</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">🔬</span>
+        <div class="class-name">Class 6</div>
+        <div class="class-sub">Algebra, biology, history of India & computer basics</div>
+        <span class="class-tag">Age 11–12</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">⚗️</span>
+        <div class="class-name">Class 7</div>
+        <div class="class-sub">Physics, chemistry, civics, geometry & essay writing</div>
+        <span class="class-tag">Age 12–13</span>
+      </div>
+      <div class="class-card">
+        <span class="class-icon">🏅</span>
+        <div class="class-name">Class 8</div>
+        <div class="class-sub">Advanced sciences, algebra, economics & board prep foundation</div>
+        <span class="class-tag">Age 13–14</span>
+      </div>
+    </div>
+
+    <div class="subjects-section fade-in">
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:1.5rem; text-align:center;">
+        Subjects Offered
+      </h3>
+      <div class="subjects-grid">
+        <div class="subject-pill"><span class="icon">📐</span> Mathematics</div>
+        <div class="subject-pill"><span class="icon">🔬</span> Science</div>
+        <div class="subject-pill"><span class="icon">🌍</span> Social Studies</div>
+        <div class="subject-pill"><span class="icon">📖</span> Hindi</div>
+        <div class="subject-pill"><span class="icon">🇬🇧</span> English</div>
+        <div class="subject-pill"><span class="icon">💻</span> Computer Science</div>
+        <div class="subject-pill"><span class="icon">🎨</span> Drawing & Art</div>
+        <div class="subject-pill"><span class="icon">🎵</span> Music</div>
+        <div class="subject-pill"><span class="icon">🏃</span> Physical Education</div>
+        <div class="subject-pill"><span class="icon">🧘</span> Moral Science</div>
+        <div class="subject-pill"><span class="icon">🌱</span> Environmental Studies</div>
+        <div class="subject-pill"><span class="icon">🌐</span> General Knowledge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label">Our Faculty</span>
+      <h2 class="section-title">Meet Our <span class="accent">Dedicated Teachers</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Our team of passionate educators brings experience, warmth, and expertise to the classroom every single day.
+      </p>
+    </div>
+    <div class="teachers-grid fade-in">
+      <!-- Principal -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#e8f5eb,#d0ebd4);">👩‍💼</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Smt. Kavita Sharma</div>
+          <div class="teacher-role">Principal & Founder</div>
+          <div class="teacher-qual">M.Ed, B.Ed – Lucknow University · 20+ yrs exp.</div>
+          <div class="teacher-desc">A visionary educator with two decades of experience, Kavita ji has built BVG into a beacon of quality education in Ghaziabad. She leads with compassion and dedication.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Leadership</span><span class="teacher-tag">Curriculum Design</span></div>
+        </div>
+      </div>
+      <!-- Vice Principal -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#fff3e8,#fde4c5);">👨‍🏫</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Shri Rajesh Verma</div>
+          <div class="teacher-role">Vice Principal</div>
+          <div class="teacher-qual">M.Sc (Physics), B.Ed – CSJM University · 15 yrs exp.</div>
+          <div class="teacher-desc">An enthusiastic science educator who makes Physics and Mathematics come alive. Rajesh sir heads academics and student welfare programmes.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Physics</span><span class="teacher-tag">Mathematics</span><span class="teacher-tag">Student Welfare</span></div>
+        </div>
+      </div>
+      <!-- Hindi Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#f0e8ff,#e0d0ff);">👩‍🏫</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Smt. Meena Gupta</div>
+          <div class="teacher-role">Senior Hindi Teacher</div>
+          <div class="teacher-qual">M.A. (Hindi Literature), B.Ed – Agra University · 12 yrs exp.</div>
+          <div class="teacher-desc">Passionate about Hindi language and literature, Meena ji instils a love for reading and storytelling in students from Class 1 to 8.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Hindi</span><span class="teacher-tag">Creative Writing</span></div>
+        </div>
+      </div>
+      <!-- English Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#e8f0ff,#d0deff);">👨‍🏫</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Mr. Aman Khanna</div>
+          <div class="teacher-role">English Language Teacher</div>
+          <div class="teacher-qual">MA (English), CTET Qualified · 8 yrs exp.</div>
+          <div class="teacher-desc">A dynamic communicator who uses storytelling, drama, and debates to make English engaging and accessible for every child.</div>
+          <div class="teacher-tags"><span class="teacher-tag">English</span><span class="teacher-tag">Drama & Debate</span></div>
+        </div>
+      </div>
+      <!-- Maths Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#fff8e8,#fdedc0);">👩‍🏫</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Smt. Priya Singh</div>
+          <div class="teacher-role">Mathematics Teacher (Cl. 5–8)</div>
+          <div class="teacher-qual">M.Sc (Maths), B.Ed – Delhi University · 10 yrs exp.</div>
+          <div class="teacher-desc">Makes complex mathematical concepts simple and fun. Known for her activity-based teaching method and extraordinary patience with learners.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Mathematics</span><span class="teacher-tag">Vedic Maths</span></div>
+        </div>
+      </div>
+      <!-- Science Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#e8fff0,#c8f0d4);">👨‍🔬</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Mr. Suresh Tiwari</div>
+          <div class="teacher-role">Science Teacher (Cl. 6–8)</div>
+          <div class="teacher-qual">M.Sc (Chemistry), B.Ed – BHU · 9 yrs exp.</div>
+          <div class="teacher-desc">Runs the school's science lab with hands-on experiments. Mentors students for the National Science Olympiad and has guided 12 state-level winners.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Chemistry</span><span class="teacher-tag">Biology</span><span class="teacher-tag">Olympiad</span></div>
+        </div>
+      </div>
+      <!-- Primary Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#ffe8f0,#fcc5d8);">👩‍🏫</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Smt. Anita Dixit</div>
+          <div class="teacher-role">Primary Class Teacher (Cl. 1–4)</div>
+          <div class="teacher-qual">B.Ed, NTT Certified – Meerut University · 11 yrs exp.</div>
+          <div class="teacher-desc">A warm and nurturing teacher for the youngest learners. Anita ji specialises in early literacy, numeracy, and emotional development.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Early Childhood</span><span class="teacher-tag">EVS</span><span class="teacher-tag">Art</span></div>
+        </div>
+      </div>
+      <!-- Music / Art Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#fffde8,#fdf5c0);">🎵</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Mr. Deepak Mishra</div>
+          <div class="teacher-role">Music & Arts Teacher</div>
+          <div class="teacher-qual">Diploma in Classical Music, Fine Arts – Allahabad · 13 yrs exp.</div>
+          <div class="teacher-desc">Brings music, tabla, and visual arts to life in our school. Deepak sir coordinates the annual cultural fest and trains students in classical traditions.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Music</span><span class="teacher-tag">Tabla</span><span class="teacher-tag">Fine Arts</span></div>
+        </div>
+      </div>
+      <!-- PT Teacher -->
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#e8f8ff,#c5e8f5);">⚽</div>
+        <div class="teacher-body">
+          <div class="teacher-name">Mr. Vivek Yadav</div>
+          <div class="teacher-role">Physical Education Teacher</div>
+          <div class="teacher-qual">B.P.Ed – Lakshmibai National University · 7 yrs exp.</div>
+          <div class="teacher-desc">Former district-level volleyball player. Coaches football, cricket and yoga. Instils discipline, teamwork and a love for physical fitness in every student.</div>
+          <div class="teacher-tags"><span class="teacher-tag">Sports</span><span class="teacher-tag">Yoga</span><span class="teacher-tag">Football</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label">Infrastructure</span>
+      <h2 class="section-title">World-Class <span class="accent">Facilities</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Every corner of our campus is designed to inspire learning, creativity, and well-being.
+      </p>
+    </div>
+    <div class="facilities-grid fade-in">
+      <div class="facility-card" data-emoji="📚">
+        <div class="facility-icon">📚</div>
+        <div class="facility-name">Well-Stocked Library</div>
+        <div class="facility-desc">Over 5,000 books including Hindi & English fiction, non-fiction, encyclopaedias, and competitive exam guides. Open daily for students and teachers.</div>
+      </div>
+      <div class="facility-card" data-emoji="🔬">
+        <div class="facility-icon">🔬</div>
+        <div class="facility-name">Science Laboratory</div>
+        <div class="facility-desc">Fully-equipped lab for Classes 6–8 with chemistry apparatus, biological specimens, and physics equipment for hands-on experimentation.</div>
+      </div>
+      <div class="facility-card" data-emoji="💻">
+        <div class="facility-icon">💻</div>
+        <div class="facility-name">Computer Lab</div>
+        <div class="facility-desc">20-station lab with internet access and educational software. Students from Class 3 onwards get regular computer literacy sessions.</div>
+      </div>
+      <div class="facility-card" data-emoji="🏃">
+        <div class="facility-icon">🏃</div>
+        <div class="facility-name">Spacious Playground</div>
+        <div class="facility-desc">Large outdoor sports ground with cricket pitch, football goalposts, badminton court, and a dedicated play zone for junior classes.</div>
+      </div>
+      <div class="facility-card" data-emoji="🎨">
+        <div class="facility-icon">🎨</div>
+        <div class="facility-name">Art & Craft Room</div>
+        <div class="facility-desc">Dedicated studio for painting, clay modelling, origami, and craft. Student artwork is proudly displayed throughout the campus.</div>
+      </div>
+      <div class="facility-card" data-emoji="🎵">
+        <div class="facility-icon">🎵</div>
+        <div class="facility-name">Music Room</div>
+        <div class="facility-desc">Soundproofed music room with harmoniums, tablas, keyboards, and a vocal practice area. Home to our award-winning school choir.</div>
+      </div>
+      <div class="facility-card" data-emoji="🚌">
+        <div class="facility-icon">🚌</div>
+        <div class="facility-name">Safe Transport</div>
+        <div class="facility-desc">GPS-tracked school buses covering major routes in Ghaziabad. Female escorts accompany buses for junior classes. Safety is our priority.</div>
+      </div>
+      <div class="facility-card" data-emoji="🍱">
+        <div class="facility-icon">🍱</div>
+        <div class="facility-name">Hygienic Canteen</div>
+        <div class="facility-desc">Clean, affordable, and nutritious mid-day meals. Our in-house kitchen follows FSSAI standards and serves fresh home-style food daily.</div>
+      </div>
+      <div class="facility-card" data-emoji="🏥">
+        <div class="facility-icon">🏥</div>
+        <div class="facility-name">Medical Room</div>
+        <div class="facility-desc">First-aid room staffed with a trained nurse. Annual health check-ups, eye tests, and dental camps are conducted for all students.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label" style="color:var(--orange-light);">Beyond the Classroom</span>
+      <h2 class="section-title">Co-Curricular <span class="accent">Activities</span></h2>
+      <p class="section-desc">
+        Learning at BVG is never confined to textbooks. Our rich programme of activities develops the whole child.
+      </p>
+    </div>
+    <div class="activities-grid fade-in">
+      <div class="activity-card">
+        <span class="activity-icon">🎭</span>
+        <div class="activity-name">Annual Cultural Fest</div>
+        <div class="activity-desc">A grand stage event each December featuring drama, dance, music, and fashion — every student participates.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">🏆</span>
+        <div class="activity-name">Sports Day</div>
+        <div class="activity-desc">Inter-class athletics, track events, kabaddi and team sports every January. Winners represent at district level.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">🧪</span>
+        <div class="activity-name">Science Exhibition</div>
+        <div class="activity-desc">Annual showcase of student-built models and experiments. Jury includes local scientists and engineers.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">📣</span>
+        <div class="activity-name">Debate & Elocution</div>
+        <div class="activity-desc">Weekly debates and speech competitions from Class 4 onwards, building confidence and critical thinking.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">🎨</span>
+        <div class="activity-name">Art Competitions</div>
+        <div class="activity-desc">Inter-school drawing, rangoli, and poster-making competitions held throughout the academic year.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">📚</span>
+        <div class="activity-name">Reading Club</div>
+        <div class="activity-desc">Book discussions, storytelling sessions, and a monthly "Best Reader" award to cultivate a lifelong reading habit.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">🌿</span>
+        <div class="activity-name">Eco Club</div>
+        <div class="activity-desc">Garden maintenance, tree plantation drives, and environment awareness campaigns led by students.</div>
+      </div>
+      <div class="activity-card">
+        <span class="activity-icon">🧘</span>
+        <div class="activity-name">Yoga & Meditation</div>
+        <div class="activity-desc">Daily 20-minute morning yoga and breathing exercises for all classes — body, mind, and balance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section id="admissions">
+  <div class="section-inner">
+    <div class="admissions-layout">
+      <div class="fade-in">
+        <span class="section-label">Enrolment</span>
+        <h2 class="section-title">Admissions <span class="accent">2025–26</span></h2>
+        <p class="section-desc">
+          Securing your child's future starts here. Follow these simple steps to join the BVG family.
+        </p>
+        <div class="admission-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Fill the Enquiry Form</div>
+              <div class="step-desc">Submit the enquiry form on this page or visit our school office between 9 AM – 2 PM on working days.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Receive Prospectus & Fee Details</div>
+              <div class="step-desc">Our admissions team will call you within 48 hours and share the prospectus, fee structure, and available seats.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">School Visit & Interaction</div>
+              <div class="step-desc">Visit the campus for a tour and an informal interaction session with the class teacher and principal.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Document Submission & Fee Payment</div>
+              <div class="step-desc">Submit required documents (birth certificate, Aadhaar, previous marksheet) and pay the registration fee to confirm admission.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-title">Welcome to BVG!</div>
+              <div class="step-desc">Your child receives their uniform kit, books list, and student ID. Classes begin as per the academic calendar.</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--orange-pale); border:1.5px solid var(--orange-light); border-radius:16px; padding:1.25rem 1.5rem; margin-top:2rem;">
+          <strong style="color:var(--orange); font-size:0.9rem;">📢 Important Dates</strong>
+          <ul style="margin-top:0.75rem; list-style:none; display:flex; flex-direction:column; gap:0.4rem;">
+            <li style="font-size:0.85rem; color:var(--text-muted);">📅 <strong>Forms Available:</strong> April 1 – May 31, 2025</li>
+            <li style="font-size:0.85rem; color:var(--text-muted);">📅 <strong>Session Begins:</strong> July 1, 2025</li>
+            <li style="font-size:0.85rem; color:var(--text-muted);">📅 <strong>Last Date for LKG/UKG:</strong> June 10, 2025</li>
+          </ul>
+        </div>
+      </div>
+      <div class="admission-form-card fade-in">
+        <h3>📋 Admission Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Parent's Name *</label>
+            <input type="text" placeholder="Full Name" id="parentName" />
+          </div>
+          <div class="form-group">
+            <label>Child's Name *</label>
+            <input type="text" placeholder="Child's Full Name" id="childName" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" id="mobile" />
+          </div>
+          <div class="form-group">
+            <label>Class Applying For *</label>
+            <select id="classApply">
+              <option value="">Select Class</option>
+              <option>LKG</option><option>UKG</option>
+              <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+              <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+              <option>Class 7</option><option>Class 8</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" id="email" />
+        </div>
+        <div class="form-group">
+          <label>Address / Area in Ghaziabad</label>
+          <input type="text" placeholder="Sector / Colony / Area" id="address" />
+        </div>
+        <div class="form-group">
+          <label>Message / Questions (optional)</label>
+          <textarea placeholder="Any specific queries or requirements…" id="message"></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">Submit Enquiry →</button>
+        <p class="form-note">We respond within 24–48 working hours. Your data is safe with us. 🔒</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label">Parent Voices</span>
+      <h2 class="section-title">What <span class="accent">Families Say</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        The trust of 500+ families is our greatest achievement.
+      </p>
+    </div>
+    <div class="testimonials-grid fade-in">
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">My daughter has transformed completely since joining BVG. She went from being shy to performing on stage at the annual fest. The teachers here genuinely care.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👩</div>
+          <div><div class="author-name">Sunita Agarwal</div><div class="author-role">Parent of Class 4 student</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">BVG strikes the perfect balance between academics and extracurriculars. My son topped his batch and also won gold in the district science olympiad. Outstanding!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👨</div>
+          <div><div class="author-name">Manoj Kumar Sharma</div><div class="author-role">Parent of Class 7 student</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">The school bus service is very safe and the teachers communicate regularly through the app. As a working mother, this peace of mind is invaluable.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👩</div>
+          <div><div class="author-name">Rekha Mishra</div><div class="author-role">Parent of LKG & Class 2 student</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">Three of my children study here and each one has received personal attention. The school truly treats every child as unique. Kavita ma'am is exceptional.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👨</div>
+          <div><div class="author-name">Rakesh Tiwari</div><div class="author-role">Parent of 3 students at BVG</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">The yoga and value education programme has made my child more grounded and focused. BVG isn't just a school — it's a second home for our kids.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👩</div>
+          <div><div class="author-name">Priyanka Singh</div><div class="author-role">Parent of Class 5 student</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">We shifted from a big brand school because of fees pressure, and honestly BVG provides far better personal attention at a fraction of the cost. Very happy!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👨</div>
+          <div><div class="author-name">Dinesh Gupta</div><div class="author-role">Parent of Class 6 student</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICE BOARD -->
+<section id="notices">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:2.5rem;">
+      <span class="section-label">Announcements</span>
+      <h2 class="section-title">Notice <span class="accent">Board</span></h2>
+    </div>
+    <div class="notices-layout fade-in">
+      <div>
+        <div class="notice-list">
+          <div class="notice-item">
+            <div class="notice-date">APR<br/>25</div>
+            <div>
+              <div class="notice-title">Annual Sports Day – Registration Open</div>
+              <div class="notice-desc">All students from Class 1–8 are encouraged to register for track & field, kabaddi, and relay events.</div>
+              <span class="notice-badge badge-event">Event</span>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-date">MAY<br/>05</div>
+            <div>
+              <div class="notice-title">Class 6–8 Half-Yearly Exams Timetable</div>
+              <div class="notice-desc">The examination schedule for May 2025 has been uploaded on the school app. Parents are requested to review.</div>
+              <span class="notice-badge badge-exam">Exam</span>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-date">MAY<br/>12</div>
+            <div>
+              <div class="notice-title">Parent-Teacher Meeting (Class 1–5)</div>
+              <div class="notice-desc">PTM scheduled for all primary classes. Time slots will be shared via WhatsApp group. Attendance compulsory.</div>
+              <span class="notice-badge badge-new">New</span>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-date">JUN<br/>01</div>
+            <div>
+              <div class="notice-title">Summer Vacation: June 1 – June 25</div>
+              <div class="notice-desc">School will remain closed. Summer activity camp registrations open separately (optional, fee applicable).</div>
+              <span class="notice-badge badge-holiday">Holiday</span>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-date">JUL<br/>01</div>
+            <div>
+              <div class="notice-title">New Session 2025–26 Begins</div>
+              <div class="notice-desc">All students must report in full uniform. New textbooks and stationery list to be purchased from the school stationery counter.</div>
+              <span class="notice-badge badge-new">New</span>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-date">AUG<br/>15</div>
+            <div>
+              <div class="notice-title">Independence Day Celebration</div>
+              <div class="notice-desc">Flag hoisting, cultural programme, and prize distribution for meritorious students. All parents are warmly invited.</div>
+              <span class="notice-badge badge-event">Event</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="calendar-card">
+          <h3>📅 Academic Calendar 2025–26</h3>
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-dot" style="background:#2d7a3a;"></div>
+              <div><div class="event-title">New Session Begins</div><div class="event-date">July 1, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#e07b2a;"></div>
+              <div><div class="event-title">Unit Test 1</div><div class="event-date">August 5–12, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#7c3aed;"></div>
+              <div><div class="event-title">Independence Day</div><div class="event-date">August 15, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#e07b2a;"></div>
+              <div><div class="event-title">Half-Yearly Exams</div><div class="event-date">October 1–15, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#7c3aed;"></div>
+              <div><div class="event-title">Diwali Break</div><div class="event-date">October 20–25, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#2d7a3a;"></div>
+              <div><div class="event-title">Annual Cultural Fest</div><div class="event-date">December 12, 2025</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#c8952a;"></div>
+              <div><div class="event-title">Winter Break</div><div class="event-date">December 25 – January 1</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#2d7a3a;"></div>
+              <div><div class="event-title">Sports Day</div><div class="event-date">January 20, 2026</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#e07b2a;"></div>
+              <div><div class="event-title">Annual Exams (Cl. 6–8)</div><div class="event-date">March 10–25, 2026</div></div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot" style="background:#7c3aed;"></div>
+              <div><div class="event-title">Result Day</div><div class="event-date">April 5, 2026</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center; max-width:700px; margin: 0 auto 3rem;">
+      <span class="section-label">Campus Life</span>
+      <h2 class="section-title">Life at <span class="accent">BVG</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Every day is a new adventure. Here's a glimpse of our vibrant school life.
+      </p>
+    </div>
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item" style="background:linear-gradient(135deg,#e8f5eb,#c8ecd0);">🎭<div class="caption">Annual Cultural Fest</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#fff3e8,#fde4c5);">🔬<div class="caption">Science Lab</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#e8f0ff,#d0deff);">📚<div class="caption">Library Corner</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#ffe8f0,#fcc5d8);">🎵<div class="caption">Music Room</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#f0e8ff,#e0d0ff);">⚽<div class="caption">Sports Day</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#fffde8,#fdf5c0);">🎨<div class="caption">Art Exhibition</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#e8fff0,#c8f0d4);">🧘<div class="caption">Yoga Morning</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#e8f8ff,#c5e8f5);">🏅<div class="caption">Prize Distribution</div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#fff8f0,#fde8d0);">🌿<div class="caption">Eco Club Drive</div></div>
+    </div>
+    <p style="text-align:center; margin-top:2rem; font-size:0.88rem; color:var(--text-muted);">
+      📸 Replace emoji placeholders with real photographs for a stunning gallery — just drop your images into the <code>public/gallery/</code> folder and update the <code>src</code> attributes.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:3rem;">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title">Contact <span class="accent">Us</span></h2>
+      <p class="section-desc">We'd love to hear from you. Visit us, call us, or drop a message below.</p>
+    </div>
+    <div class="contact-layout fade-in">
+      <div>
+        <div class="contact-info">
+          <div class="contact-block">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">Balya Vardhan Gurukul</div>
+              <div class="contact-sub">Plot No. 45, Sector 14, Vasundhara,<br/>Ghaziabad, Uttar Pradesh – 201012</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+911234567890">+91 12345 67890</a></div>
+              <div class="contact-sub">Mon–Sat, 8:00 AM – 3:00 PM</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value"><a href="https://wa.me/911234567890">+91 12345 67890</a></div>
+              <div class="contact-sub">Quick replies on WhatsApp</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:info@balyavardhan.edu.in">info@balyavardhan.edu.in</a></div>
+              <div class="contact-sub">We respond within 24 hours</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label">Office Hours</div>
+              <div class="contact-value">Monday – Saturday</div>
+              <div class="contact-sub">8:00 AM – 3:00 PM (School Days)<br/>9:00 AM – 12:00 PM (Saturdays)</div>
+            </div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <strong>Find Us on Google Maps</strong>
+          <p style="font-size:0.82rem; font-weight:normal; font-family:'Nunito',sans-serif; color:var(--green); margin-top:0.25rem;">
+            Sector 14, Vasundhara, Ghaziabad, UP<br/>
+            <a href="https://maps.google.com/?q=Vasundhara+Ghaziabad" target="_blank" 
+               style="color:var(--orange); font-weight:700; font-size:0.9rem;">
+              Open in Google Maps →
+            </a>
+          </p>
+          <p style="font-size:0.75rem; color:var(--text-muted); font-family:'Nunito',sans-serif; margin-top:0.5rem;">
+            ⬆️ Replace with an embedded Google Maps iframe for your actual location
+          </p>
+        </div>
+      </div>
+      <div class="contact-form-card fade-in">
+        <h3>💬 Send Us a Message</h3>
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="Full Name" id="cName" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Mobile *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" id="cPhone" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" id="cEmail" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="cSubject">
+            <option>Admission Enquiry</option>
+            <option>Fee Structure</option>
+            <option>Transport Query</option>
+            <option>Academic Query</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea placeholder="Write your message here…" id="cMessage" style="min-height:130px;"></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitContact()">Send Message →</button>
+        <p class="form-note">All enquiries are responded to within 24 working hours. 🙏</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="public/logo.png" alt="Balya Vardhan Gurukul" />
+        <p>A school where ancient Gurukul wisdom meets the best of modern education. Nurturing young minds in Ghaziabad since 2013.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Facebook">📘</a>
+          <a class="social-link" href="#" title="Instagram">📷</a>
+          <a class="social-link" href="#" title="YouTube">▶️</a>
+          <a class="social-link" href="#" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#teachers">Faculty</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Classes</h4>
+        <ul>
+          <li><a href="#academics">LKG & UKG</a></li>
+          <li><a href="#academics">Class 1 – 3</a></li>
+          <li><a href="#academics">Class 4 – 5</a></li>
+          <li><a href="#academics">Class 6 – 8</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+911234567890">📞 +91 12345 67890</a></li>
+          <li><a href="mailto:info@balyavardhan.edu.in">📧 info@balyavardhan.edu.in</a></li>
+          <li><a href="#">📍 Vasundhara, Ghaziabad</a></li>
+          <li><a href="#">⏰ Mon–Sat 8 AM–3 PM</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Balya Vardhan Gurukul. All Rights Reserved.</span>
+      <span>Made with 💚 for the BVG Family</span>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">✅ Thank you! We'll contact you within 24–48 hours.</div>
+
+<!-- SCROLL TOP -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Navbar scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.1)' : '0 2px 16px rgba(0,0,0,0.06)';
+    const st = document.getElementById('scrollTop');
+    if (window.scrollY > 300) st.classList.add('visible');
+    else st.classList.remove('visible');
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Toast helper
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  // Form submission
+  function submitForm() {
+    const p = document.getElementById('parentName').value.trim();
+    const c = document.getElementById('childName').value.trim();
+    const m = document.getElementById('mobile').value.trim();
+    const cl = document.getElementById('classApply').value;
+    if (!p || !c || !m || !cl) {
+      showToast('⚠️ Please fill all required fields.');
+      document.getElementById('toast').style.background = 'var(--orange)';
+      setTimeout(() => { document.getElementById('toast').style.background = 'var(--green)'; }, 4100);
+      return;
+    }
+    showToast('✅ Enquiry submitted! We\'ll call you within 48 hours.');
+    ['parentName','childName','mobile','email','address','message','classApply'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el.tagName === 'SELECT') el.selectedIndex = 0; else el.value = '';
+    });
+  }
+
+  function submitContact() {
+    const n = document.getElementById('cName').value.trim();
+    const p = document.getElementById('cPhone').value.trim();
+    const msg = document.getElementById('cMessage').value.trim();
+    if (!n || !p || !msg) {
+      showToast('⚠️ Please fill all required fields.');
+      document.getElementById('toast').style.background = 'var(--orange)';
+      setTimeout(() => { document.getElementById('toast').style.background = 'var(--green)'; }, 4100);
+      return;
+    }
+    showToast('✅ Message sent! We\'ll respond within 24 hours.');
+    ['cName','cPhone','cEmail','cMessage'].forEach(id => document.getElementById(id).value = '');
+  }
+</script>
+
+</body>
+</html>
