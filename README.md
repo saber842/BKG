@@ -1,14 +1,3 @@
-# Balya Vardhan Gurukul — School Website
-
-## 🚀 Deploy to Vercel in 3 steps
-
-1. Upload this folder to a **GitHub repository**
-2. Go to [vercel.com](https://vercel.com) → **New Project** → Import your repo
-3. Hit **Deploy** — no build settings needed (static HTML)
-
-Your site will be live at `https://your-project-name.vercel.app`
-
----
 
 ## 📁 Project Structure
 
@@ -17,7 +6,7 @@ balya-vardhan-gurukul/
 ├── index.html        ← The entire website (single file)
 ├── vercel.json       ← Vercel routing config
 ├── public/
-│   └── logo.png      ← School logo (already placed)
+│   └── logo.png      ← School logo 
 └── README.md
 ```
 
